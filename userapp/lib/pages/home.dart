@@ -28,7 +28,9 @@ class Homepage extends StatelessWidget {
             color: const Color.fromARGB(255, 248, 246, 246),
             
           ),
-          child: SvgPicture.asset('assets/icons/threedotshorizontal.svg'),
+          child: SvgPicture.asset('assets/icons/threedotshorizontal.svg',
+          height:25 ,
+          width: 25,),
           
       ),
       actions: [Container(
@@ -42,7 +44,9 @@ class Homepage extends StatelessWidget {
             color: const Color.fromARGB(255, 248, 246, 246),
             
           ),
-          child: SvgPicture.asset('assets/icons/profile.svg'),
+          child: SvgPicture.asset('assets/icons/profile.svg',
+          height: 25,
+          width: 25,),
           
       ),],
         /*leading: IconButton(
