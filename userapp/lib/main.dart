@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'pages/home.dart'; 
+import 'pages/home.dart';
+//import 'pages/wallet.dart';
+//import 'pages/profile_page.dart'; 
 
 void main() {
   runApp(const MyApp());
