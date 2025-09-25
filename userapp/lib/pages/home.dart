@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:userapp/pages/issues.dart';
-import 'package:userapp/pages/wallet.dart';
-import 'package:userapp/blocks/road.dart';
-import 'package:userapp/blocks/sanitation.dart';
-import 'package:userapp/blocks/infra.dart';
-import 'package:userapp/blocks/puborder.dart';
+import 'package:userapp/pages/report.dart'; // central page
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -20,7 +16,6 @@ class _HomepageState extends State<Homepage> {
   final List<Widget> _pages = [
     IssuesPage(),
     Center(child: Text("test")),
-    WalletPage(),
     Center(child: Text("Contact Page")),
   ];
 
@@ -35,23 +30,23 @@ class _HomepageState extends State<Homepage> {
       Colors.teal,
     ];
 
-
     final List<String> buttonLabels = [
       'Road & Transport',
       'Sanitation',
       'Infrastructure',
       'Public Order',
-      'Electricity and Powers',
-      'Gov body issues',
+      'Electricity and Power',
+      'Gov Body Issues',
     ];
 
-    final List<Widget> pages = [
-    RoadPage(),
-    Sanitation(),
-    Infra(), // Infrastructure
-    Puborder(), // Public Order
-    Placeholder(), // Electricity
-    Placeholder(), // Gov Body Issues
+    // Each service has its own categories
+    final List<List<String>> categories = [
+      ['Potholes', 'Wrong Parking', 'Clogged Road'],
+      ['Garbage', 'Sewage Leak', 'Overflowing Bins'],
+      ['Broken Buildings', 'Unsafe Structures'],
+      ['Illegal Encroachments', 'Noise Complaints'],
+      ['Power Cut', 'Street Lights Not Working'],
+      ['Corruption', 'Inefficient Service'],
     ];
 
     return Scaffold(
@@ -100,7 +95,10 @@ class _HomepageState extends State<Homepage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => pages[index],
+                                builder: (context) => ReportPage(
+                                  serviceTitle: buttonLabels[index],
+                                  categories: categories[index],
+                                ),
                               ),
                             );
                           },
@@ -129,12 +127,9 @@ class _HomepageState extends State<Homepage> {
           });
         },
         items: const [
-          
-          BottomNavigationBarItem(icon: Icon(Icons.check_box), label: "issues"),
+          BottomNavigationBarItem(icon: Icon(Icons.check_box), label: "Issues"),
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.account_balance_wallet), label: "wallet"),
           BottomNavigationBarItem(icon: Icon(Icons.add_ic_call), label: "Contact"),
-
         ],
       ),
     );
